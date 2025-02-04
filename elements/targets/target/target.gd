@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Target
 
-const GENERATION_LIMIT := 10
+const GENERATION_LIMIT := 100
 const KNIFE_POSITION = Vector2(0, 180)
 const APPLE_POSITION = Vector2(0, 176)
-const OBJECT_MARGIN := PI / 6
+const OBJECT_MARGIN := 0.96
 
 var knife_scene : PackedScene = load("res://elements/knife/knife.tscn")
 var apple_scene : PackedScene = load("res://elements/apple/apple/apple.tscn")
@@ -14,7 +14,7 @@ var speed := PI
 @onready var items_container := $ItemsContainer
 
 func _ready() -> void:
-	add_default_items(3, 2)
+	add_default_items(2, 3)
 
 func _physics_process(delta: float) -> void:
 	rotation += speed * delta
@@ -47,7 +47,7 @@ func add_default_items(knives: int, apples: int):
 func get_free_random_rotation(occupied_rotations: Array, generation_attempts = 0):
 	if generation_attempts >= GENERATION_LIMIT:
 		return null
-	var random_rotation = Globals.rng.randf_range(0, PI * 2)
+	var random_rotation = Globals.rng.randf_range(OBJECT_MARGIN / 2, PI * 2 - (OBJECT_MARGIN / 2))
 	
 	for occupied in occupied_rotations:
 		if random_rotation <= occupied + OBJECT_MARGIN / 2.0 and random_rotation >= occupied - OBJECT_MARGIN / 2.0:
