@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cso6wdxm7tlg8" path="res://assets/knife1.png" id="1_fr76n"]
 [ext_resource type="Script" path="res://elements/knife/knife.gd" id="1_vrycd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtaxo"]
-size = Vector2(26, 150)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naar6"]
+size = Vector2(20, 140)
 
 [node name="Knife" type="CharacterBody2D"]
 collision_layer = 2
@@ -15,4 +15,4 @@ script = ExtResource("1_vrycd")
 texture = ExtResource("1_fr76n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mtaxo")
+shape = SubResource("RectangleShape2D_naar6")
